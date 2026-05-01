@@ -542,24 +542,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "firebase/app";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-        
-        // Your web app's Firebase configuration
+        // Configuración Firebase UMK3
         const firebaseConfig = {
-          apiKey: "AIzaSyDX3nh00bFrYip5eynuMQJ1jSnk0c_1Ay0",
-          authDomain: "umk-3-liga.firebaseapp.com",
-          databaseURL: "https://umk-3-liga-default-rtdb.firebaseio.com",
-          projectId: "umk-3-liga",
-          storageBucket: "umk-3-liga.firebasestorage.app",
-          messagingSenderId: "719592250850",
-          appId: "1:719592250850:web:b7fd68412b9fa07931adbb"
+            apiKey: "AIzaSyDX3nh00bFrYip5eynuMQJ1jSnk0c_1Ay0",
+            authDomain: "umk-3-liga.firebaseapp.com",
+            databaseURL: "https://umk-3-liga-default-rtdb.firebaseio.com",
+            projectId: "umk-3-liga",
+            storageBucket: "umk-3-liga.firebasestorage.app",
+            messagingSenderId: "719592250850",
+            appId: "1:719592250850:web:b7fd68412b9fa07931adbb"
         };
         
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
+        // Inicializar Firebase (versión correcta para tus scripts)
+        firebase.initializeApp(firebaseConfig);
+        
         const db = firebase.database();
         let alreadyMarkedOnline = {}; // objeto para marcar por usuario (evita repetir)
 
