@@ -46,6 +46,11 @@
 </div>
 
 <script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDX3nh00bFrYip5eynuMQJ1jSnk0c_1Ay0",
@@ -56,7 +61,9 @@ const firebaseConfig = {
   messagingSenderId: "719592250850",
   appId: "1:719592250850:web:b7fd68412b9fa07931adbb"
 };
-firebase.initializeApp(firebaseConfig);
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 const db = firebase.database();
 
 let players = [];
