@@ -317,16 +317,12 @@
       <option value="PARAGUAY">Paraguay 🇵🇾</option>
       <option value="CHILE">Chile 🇨🇱</option>
       <option value="URUGUAY">Uruguay 🇺🇾</option>
-      <option value="BRASIL">Brasil 🇧🇷</option> <!-- NUEVA LÍNEA -->
-      <option value="ECUADOR">Ecuador 🇪🇨</option> <!-- ← NUEVA LÍNEA -->
+      <option value="BRASIL">Brasil 🇧🇷</option>
+      <option value="ECUADOR">Ecuador 🇪🇨</option>
     </select>
     <button onclick="addPlayer()">Agregar Guerrero</button>
-    <button onclick="forceRebuild()" style="background:#4CAF50; color:white; margin-top:10px;">🔄 Sincronizar y
-      Recalcular Ranking</button>
-    <button onclick="resetInactivePlayers()"
-      style="background:#d32f2f; color:white; margin-top:10px; padding:12px 20px; border-radius:8px; font-weight:bold; width:100%;">
-      🔄 Reiniciar a 0 ELO jugadores sin peleas
-    </button>
+    <button onclick="forceRebuild()" style="background:#4CAF50; color:white; margin-top:10px;">🔄 Sincronizar y Recalcular Ranking</button>
+    <button onclick="resetInactivePlayers()" style="background:#d32f2f; color:white; margin-top:10px; padding:12px 20px; border-radius:8px; font-weight:bold; width:100%;">🔄 Reiniciar a 0 ELO jugadores sin peleas</button>
   </section>
 
   <section>
@@ -392,7 +388,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Variables globales - IMPORTANTÍSIMO que estén ANTES de las funciones
+    // === VARIABLES GLOBALES (deben ir ANTES de las funciones) ===
     let players = [];
     let history = [];
     let editingId = null;
@@ -400,40 +396,7 @@
     let currentPageLogs = 1;
     let currentPageRanking = 1;
     let isSaving = false;
-
-    // ... aquí van todas tus funciones (addPlayer, rebuild, registerMatch, etc.)
-
-    // Función para autenticar al cargar la página
-    function autenticarAdmin() {
-      if (sessionStorage.getItem("admin_auth") === "true") {
-        auth.signInAnonymously()
-          .then(() => console.log("Admin autenticado automáticamente"))
-          .catch(err => console.error("Error en auto-auth:", err));
-        return;
-      }
-
-      const password = prompt("Clave de administrador:");
-      if (password === "Vicky321tyler") {
-        sessionStorage.setItem("admin_auth", "true");
-        auth.signInAnonymously()
-          .then(() => console.log("Admin autenticado correctamente"))
-          .catch(err => console.error("Error al autenticar:", err));
-      } else {
-        alert("Clave incorrecta");
-        window.location.href = 'index.html';
-      }
-    }
-
-    // Llamar a la autenticación al cargar
-    autenticarAdmin();
-
-    let players = [], history = [];
-    let editingId = null;
-    const PAGE_SIZE = 10;
-    let currentPageLogs = 1;
-    let currentPageRanking = 1;
-    let isSaving = false; // Bandera para ignorar actualizaciones propias
-
+    
     const ranks = [
       { name: "E", min: 0, max: 499, class: "rank-E" },
       { name: "D", min: 500, max: 799, class: "rank-D" },
